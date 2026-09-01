@@ -3,8 +3,8 @@ const produit = {
  prix: 450,
  stock: 12,
  categorie: "Informatique",
- enPromotion: false
 };
+produit.enPromotion = false;
 
 console.log(produit.nom +' - '+produit.prix+' DH -'+produit.stock + 'en stock  '+'('+produit.categorie+')');
 // let nouveau_prix = produit.prix + produit.prix * 0.1;
