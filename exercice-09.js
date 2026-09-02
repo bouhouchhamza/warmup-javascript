@@ -9,9 +9,9 @@ function calculerCommande(donner){
     let livraison;
     if(donner.montant < 200){
         percentageRemise = 0;
-    }else if(donner.montant > 200 && donner.montant < 500){
+    }else if(donner.montant >= 200 && donner.montant < 500){
         percentageRemise = 5;
-    }else if(donner.montant > 500 && donner.montant < 1000){
+    }else if(donner.montant >= 500 && donner.montant < 1000){
         percentageRemise = 10;
     }else{
         percentageRemise = 15;
