@@ -12,19 +12,38 @@ const ventes = [
   { vendeur: "Sara", produit: "Ecran 27 pouces", montant: 2600, mois: "mars" },
 ];
 
-const chiffreTotal = ventes.reduce((acc,vente)=> acc += vente.montant ,0 );
+const chifferDaffairre = ventes.reduce((acc,vente)=>{
+    acc += vente.montant;
+    return acc
+},0)
 console.log("=== RAPPORT DES VENTES ===");
-console.log("chiffre d'affaire total : "+chiffreTotal);
+console.log("Chiffre d'affaires total : "+chifferDaffairre);
+
 const meilleureVente = ventes.reduce((plusGrande,vente)=>{
     if(vente.montant > plusGrande.montant){
-        plusGrande = vente.montant
+      plusGrande = vente
     }else{
-        plusGrande = plusGrande
+      plusGrande = plusGrande;
     }
-    return plusGrande
-})
-// const meilleureVenteString = Object.entries(meilleureVente).
-console.log(meilleureVente);
+    return plusGrande   
+});
+const mielleurnom = meilleureVente.produit;
+const mielleurvendeur = meilleureVente.vendeur;
+const mielleurprix = meilleureVente.montant;
+console.log("Meilleure vente : "+ mielleurnom + ' (' + mielleurvendeur + ')' +' - ' +mielleurprix+ ' DH' );
+const caParVendeur = ventes.reduce((acc,vente)=>{
+    if(acc[vente.vendeur] === undefined){
+      acc[vente.vendeur] = 0
+    }
+    acc[vente.vendeur]+=vente.montant;
+    return acc
+},{})
+const caParVendeurArray = Object.entries(caParVendeur).map((el)=>el[0]+' : '+el[1]);
+console.log('CA par vendeur : \n'+caParVendeurArray.join('\n'));
+const moyennePerVendeur =  chifferDaffairre / caParVendeurArray.length;
+console.log('Moyenne par vendeur :  '+moyennePerVendeur + 'DH');
+const au_dessus_de_moyenne = Object.entries(caParVendeur).filter((el)=>el[1] > moyennePerVendeur).map((el)=>el[0]);
+console.log('Au-dessus de la moyenne : '+au_dessus_de_moyenne.toString());
 
 
 
@@ -49,34 +68,30 @@ console.log(meilleureVente);
 
 
 
-// let montantTotal = ventes.reduce((acc, vente) => {
-//   acc += vente.montant;
-//   return acc
-// },0);
-// let ventePlusEleve = ventes.reduce((plusGrande,vente)=>{
-//     if(vente.montant > plusGrande.montant){
-//         plusGrande = vente 
-//     }else{
-//         plusGrande = plusGrande;
-//     }
-//     return plusGrande;
-// });
-// let  caParVendeur =ventes.reduce((moyen,vente)=>{
-//     if(moyen[vente.vendeur] === undefined){
-//         moyen[vente.vendeur] = 0;
-//     }
-//     moyen[vente.vendeur] = moyen[vente.vendeur] +   vente.montant;
-    
-//     return moyen
-// },{})
-// // console.log(caParVendeur);
-// let arrVenderCa = Object.entries(caParVendeur);
-// // console.log(arrVenderCa)
-// let moyenne = montantTotal / arrVenderCa.length;
-// let au_dessus_de_moyenne = arrVenderCa.filter((el)=> el[1]> moyenne)
-// // console.log(moyenne)
-// // let au_dessus_de_moyenne = ventes.filter((el)=> el[1] > moyen);
-// console.log(au_dessus_de_moyenne)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
